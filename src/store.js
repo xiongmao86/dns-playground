@@ -1,5 +1,5 @@
 
-query1 = {
+const query1 = {
     "id": 0x7385,
     
     "response": false,
@@ -20,9 +20,9 @@ query1 = {
         "type": "A",
         "class": "IN"
     }]
-}
+};
 
-response1 = {
+const response1 = {
     "id": 0x696f,
 
     "response": true,
@@ -63,15 +63,15 @@ response1 = {
             "address": "221.181.72.250"
         }
     ]
-}
+};
 
-response2 = {
+const response2 = {
     "id": 0x867f,
 
     "response": true,
     "opcode": 0x0000,
     "authoritative": false,
-    "truncated" false,
+    "truncated": false,
     "recursion-desired": true,
     "recursion-available": true,
     "z": false,
@@ -200,4 +200,6 @@ response2 = {
         }
     ]
 
-}
+};
+
+export default response2;
