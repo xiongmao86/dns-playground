@@ -26,7 +26,7 @@ export default new Vuex.Store({
     "querys": [{
       "name": "www.baidu.com",
       "type": "A",
-      // class is a keyword in javascript so rename it to klass.
+      // class is a keyword of javascript so rename it to klass.
       "klass": "IN"
     }],
     "answers": [
