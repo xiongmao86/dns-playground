@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-      <packet />
+      <DNSHeader />
+      <!-- <DNSQuery /> -->
   </div>
 </template>
 
 <script>
-import Packet from './components/Packet.vue'
+import DNSHeader from './components/DNSHeader.vue'
+import DNSQuery from './components/DNSQuery.vue'
 
 export default {
   name: 'App',
   components: {
-    Packet
+    DNSHeader,
+    DNSQuery
   }
 }
 </script>
