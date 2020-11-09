@@ -1,6 +1,6 @@
 <template>
     <tr>
-        <th v-for="index in this.upper()" 
+        <th v-for="index in this.range()" 
             :key="index">
                 {{ index }}
         </th>
@@ -13,7 +13,7 @@ export default {
         "n"
     ],
     methods: {
-        upper() {
+        range() {
             return Array.from({ length: this.n }, (v, k) => k + 1)
         }
     }
