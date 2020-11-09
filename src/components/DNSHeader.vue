@@ -1,6 +1,5 @@
 <template>
     <table>
-        <caption>DNS Header</caption>
         <thead>
             <Ruler :n="16" />
         </thead>
