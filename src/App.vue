@@ -1,19 +1,24 @@
 <template>
   <div id="app">
       <DNSHeader />
-      <!-- <DNSQuery /> -->
+      <DNSQuery v-bind="query"/>
   </div>
 </template>
 
 <script>
 import DNSHeader from './components/DNSHeader.vue'
-// import DNSQuery from './components/DNSQuery.vue'
+import DNSQuery from './components/DNSQuery.vue'
 
 export default {
   name: 'App',
   components: {
-    DNSHeader
-    // DNSQuery
+    DNSHeader,
+    DNSQuery
+  },
+  data () {
+    return {
+      query: this.$store.state.querys[0]
+    }
   }
 }
 </script>
