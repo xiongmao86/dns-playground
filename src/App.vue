@@ -7,13 +7,13 @@
 
 <script>
 import DNSHeader from './components/DNSHeader.vue'
-import DNSQuery from './components/DNSQuery.vue'
+// import DNSQuery from './components/DNSQuery.vue'
 
 export default {
   name: 'App',
   components: {
-    DNSHeader,
-    DNSQuery
+    DNSHeader
+    // DNSQuery
   }
 }
 </script>

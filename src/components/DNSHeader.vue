@@ -2,7 +2,7 @@
     <table>
         <caption>DNS Header</caption>
         <thead>
-            <Ruler />
+            <Ruler :n="16" />
         </thead>
         <tbody>
             <tr>
@@ -60,9 +60,6 @@
                 <td colspan="16">{{ pack.additional_information_count }}</td>
             </tr>
         </tbody>
-        <tfoot>
-            <Ruler />
-        </tfoot>
     </table>
 </template>
 
