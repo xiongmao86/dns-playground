@@ -55,7 +55,7 @@ export default new Vuex.Store({
         "address": "14.215.177.38"
       }
     ],
-    "Authoritative_nameservers": [
+    "authoritative_nameservers": [
       {
         "name": "a.shifen.com",
         "type": "NS",
