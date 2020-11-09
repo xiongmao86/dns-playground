@@ -78,16 +78,5 @@ export default {
 </script>
 
 <style>
-caption {
-    font-weight: bold;
-}
-td {
-    border: 1px solid lightsteelblue;
-}
-th {
-    border: 1px solid lightsteelblue;
-}
-tfoot {
-    display: none;
-}
+
 </style>

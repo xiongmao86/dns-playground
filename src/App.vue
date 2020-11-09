@@ -11,6 +11,10 @@
       <DNSResourceRecord v-for="(answer, index) in answers"
         v-bind="answer"
         v-bind:key="index" />
+      <h2>DNS Authority Nameservers</h2>
+      <DNSResourceRecord v-for="(nameserver, index) in nameservers"
+        v-bind="nameserver"
+        v-bind:key="index" />
   </div>
 </template>
 
@@ -29,7 +33,8 @@ export default {
   data () {
     return {
       querys: this.$store.state.querys,
-      answers: this.$store.state.answers
+      answers: this.$store.state.answers,
+      nameservers: this.$store.state.authoritative_nameservers
     }
   }
 }
@@ -43,5 +48,19 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+table {
+  margin: 5px;
+  border: 1px solid green;
+}
+th, td {
+  border: 1px solid lightsteelblue;
+}
+th {
+  background-color: mediumseagreen;
+}
+td {
+  background-color: yellowgreen;
 }
 </style>
