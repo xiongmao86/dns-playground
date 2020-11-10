@@ -54,7 +54,7 @@ export default {
         // TODO
         address: String,
         nameserver: String,
-        CNAME: String
+        canonical_name: String
     },
     methods: {
         rdata_name() {
@@ -76,7 +76,7 @@ export default {
             } else if (this.type === "NS") {
                 return this.nameserver;
             } else if (this.type === "CNAME") {
-                return this.CNAME;
+                return this.canonical_name;
             } else {
                 return "Unknown";
             }

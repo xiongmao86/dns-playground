@@ -36,7 +36,7 @@ export default new Vuex.Store({
         "klass": "IN",
         "time_to_live": 600,
         "data_length": 15,
-        "CNAME": "www.a.shifen.com"
+        "canonical_name": "www.a.shifen.com"
       },
       {
         "name": "www.a.shifen.com",
