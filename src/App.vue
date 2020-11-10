@@ -15,6 +15,10 @@
       <DNSResourceRecord v-for="(nameserver, index) in nameservers"
         v-bind="nameserver"
         v-bind:key="index" />
+      <h2>DNS Additional Records</h2>
+      <DNSResourceRecord v-for="(record, index) in additional_records"
+        v-bind="record"
+        v-bind:key="index" />
   </div>
 </template>
 
@@ -34,7 +38,8 @@ export default {
     return {
       querys: this.$store.state.querys,
       answers: this.$store.state.answers,
-      nameservers: this.$store.state.authoritative_nameservers
+      nameservers: this.$store.state.authoritative_nameservers,
+      additional_records: this.$store.state.additional_records
     }
   }
 }
