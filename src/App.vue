@@ -3,10 +3,7 @@
       <h1>The Anatomy of DNS Packet</h1>
       <h2>DNS Header</h2>
       <DNSHeader />
-      <h2>DNS Querys</h2>
-      <DNSQuery v-for="(query, index) in querys"
-        v-bind="query"
-        v-bind:key="index" />
+      <DNSQueryArray />
       <h2>DNS Answers</h2>
       <DNSResourceRecord v-for="(answer, index) in answers"
         v-bind="answer"
@@ -24,19 +21,18 @@
 
 <script>
 import DNSHeader from './components/DNSHeader.vue'
-import DNSQuery from './components/DNSQuery.vue'
+import DNSQueryArray from './components/DNSQueryArray.vue'
 import DNSResourceRecord from './components/DNSResourceRecord.vue'
 
 export default {
   name: 'App',
   components: {
     DNSHeader,
-    DNSQuery,
+    DNSQueryArray,
     DNSResourceRecord
   },
   data () {
     return {
-      querys: this.$store.state.querys,
       answers: this.$store.state.answers,
       nameservers: this.$store.state.authoritative_nameservers,
       additional_records: this.$store.state.additional_records

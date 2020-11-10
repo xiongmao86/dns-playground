@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import Ruler from './header/Ruler.vue';
+import Ruler from './subcomponents/Ruler.vue';
 
 export default {
     components: {
