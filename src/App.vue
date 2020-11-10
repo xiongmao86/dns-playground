@@ -1,7 +1,6 @@
 <template>
   <div id="app">
       <h1>The Anatomy of DNS Packet</h1>
-      <h2>DNS Header</h2>
       <DNSHeader />
 
       <DNSQueryArray />
