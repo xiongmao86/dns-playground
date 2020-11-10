@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <th>
-                RDData
+                RData
             </th>
         </tr>
         <tr>
@@ -49,7 +49,7 @@ export default {
     props: {
         name: String,
         type: String,
-        class: String,
+        klass: String,
         time_to_live: Number,
         data_length: Number,
         // TODO
