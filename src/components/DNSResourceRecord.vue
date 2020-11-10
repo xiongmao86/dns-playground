@@ -32,13 +32,12 @@
         </tr>
         <tr>
             <th>
-                RData
+                {{rdata_name()}}
             </th>
         </tr>
         <tr>
-            <!-- TODO -->
             <td>
-                Placeholder
+                {{rdata_interpret()}}
             </td>
         </tr>
     </table>
@@ -53,7 +52,35 @@ export default {
         time_to_live: Number,
         data_length: Number,
         // TODO
-        placeholder: String
+        address: String,
+        nameserver: String,
+        CNAME: String
+    },
+    methods: {
+        rdata_name() {
+            if (this.type === "A") {
+                return "Address";
+            } else if (this.type === "NS") {
+                return "Nameserver";
+            } else if (this.type === "MX") {
+                return "Mail Exchange";
+            } else if (this.type === "CNAME") {
+                return "Canonical Name";
+            } else {
+                return "Unknown";
+            }
+        },
+        rdata_interpret() {
+            if (this.type === "A") {
+                return this.address;
+            } else if (this.type === "NS") {
+                return this.nameserver;
+            } else if (this.type === "CNAME") {
+                return this.CNAME;
+            } else {
+                return "Unknown";
+            }
+        }
     }
 }
 </script>

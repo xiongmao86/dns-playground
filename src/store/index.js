@@ -62,7 +62,7 @@ export default new Vuex.Store({
         "klass": "IN",
         "time_to_live": 205,
         "data_length": 6,
-        "name_server": "ns3.a.shifen.com"
+        "nameserver": "ns3.a.shifen.com"
       },
       {
         "name": "a.shifen.com",
@@ -70,7 +70,7 @@ export default new Vuex.Store({
         "klass": "IN",
         "time_to_live": 205,
         "data_length": 6,
-        "name_server": "ns4.a.shifen.com"
+        "nameserver": "ns4.a.shifen.com"
       },
       {
         "name": "a.shifen.com",
@@ -78,7 +78,7 @@ export default new Vuex.Store({
         "klass": "IN",
         "time_to_live": 205,
         "data_length": 6,
-        "name_server": "ns2.a.shifen.com"
+        "nameserver": "ns2.a.shifen.com"
       },
       {
         "name": "a.shifen.com",
@@ -86,7 +86,7 @@ export default new Vuex.Store({
         "klass": "IN",
         "time_to_live": 205,
         "data_length": 6,
-        "name_server": "ns1.a.shifen.com"
+        "nameserver": "ns1.a.shifen.com"
       },
       {
         "name": "a.shifen.com",
@@ -94,7 +94,7 @@ export default new Vuex.Store({
         "klass": "IN",
         "time_to_live": 205,
         "data_length": 6,
-        "name_server": "ns5.a.shifen.com"
+        "nameserver": "ns5.a.shifen.com"
       }
     ],
     "additional_records": [
