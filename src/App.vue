@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+      <input id="binaryFile" type="file">
+      <button @click="loadBinary">Load</button>
+      <p>text is {{ text }}</p>
       <DNSPacket />
   </div>
 </template>
@@ -11,6 +14,26 @@ export default {
   name: 'App',
   components: {
     DNSPacket
+  },
+  data () {
+    return {
+      text: ""
+    };
+  },
+  methods: {
+    setText (str) {
+      this.text = str;
+    },
+    loadBinary () {
+      let files = document.getElementById("binaryFile").files;
+      // TODO temporarily.
+      if (files.length === 1) {
+        let file = files[0];
+        let reader = new FileReader();
+        reader.onload = (event) => this.text = event.target.result;
+        reader.readAsText(file);
+      } 
+    }
   }
 }
 </script>

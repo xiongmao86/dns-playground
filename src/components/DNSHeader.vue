@@ -74,7 +74,7 @@ export default {
     },
     data() {
         return {
-            pack: this.$store.state
+            pack: this.$store.state.pack
         }
     }
 }

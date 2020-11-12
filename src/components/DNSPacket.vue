@@ -30,9 +30,9 @@ export default {
   },
   data () {
     return {
-      answers: this.$store.state.answers,
-      nameservers: this.$store.state.authoritative_nameservers,
-      additional_records: this.$store.state.additional_records
+      answers: this.$store.state.pack.answers,
+      nameservers: this.$store.state.pack.authoritative_nameservers,
+      additional_records: this.$store.state.pack.additional_records
     }
   }
 }

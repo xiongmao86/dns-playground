@@ -16,7 +16,7 @@ export default {
     },
     data () {
         return {
-            querys: this.$store.state.querys
+            querys: this.$store.state.pack.querys
         }
     }
 }
