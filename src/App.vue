@@ -2,36 +2,42 @@
   <div id="app">
       <input id="binaryFile" type="file">
       <button @click="loadBinary">Load</button>
-      <p>text is {{ text }}</p>
+      <DNSBuffer v-if="this.arrayBuffer"
+        :buffer="buffer" />
       <DNSPacket />
   </div>
 </template>
 
 <script>
 import DNSPacket from './components/DNSPacket.vue'
+import DNSBuffer from './components/DNSBuffer.vue'
 
 export default {
   name: 'App',
   components: {
-    DNSPacket
+    DNSPacket,
+    DNSBuffer
   },
   data () {
     return {
-      text: ""
+      arrayBuffer: null
     };
   },
+  computed: {
+    buffer () {
+      return [...new Uint8Array(this.arrayBuffer)]
+        .map (b => b.toString(16).toUpperCase().padStart(2, '0'));
+    }
+  },
   methods: {
-    setText (str) {
-      this.text = str;
-    },
     loadBinary () {
       let files = document.getElementById("binaryFile").files;
       // TODO temporarily.
       if (files.length === 1) {
         let file = files[0];
         let reader = new FileReader();
-        reader.onload = (event) => this.text = event.target.result;
-        reader.readAsText(file);
+        reader.onload = (event) => this.arrayBuffer = event.target.result;
+        reader.readAsArrayBuffer(file);
       } 
     }
   }
