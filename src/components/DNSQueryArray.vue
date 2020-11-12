@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import DNSQuery from './subcomponents/DNSQuery.vue'
+import DNSQuery from './DNSQuery.vue'
 
 export default {
     components: {

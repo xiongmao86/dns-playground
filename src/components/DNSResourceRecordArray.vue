@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import DNSResourceRecord from "./subcomponents/DNSResourceRecord.vue"
+import DNSResourceRecord from "./DNSResourceRecord.vue"
 
 export default {
     components: {
