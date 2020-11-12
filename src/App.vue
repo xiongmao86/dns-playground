@@ -1,39 +1,16 @@
 <template>
   <div id="app">
-      <h1>The Anatomy of DNS Packet</h1>
-      <DNSHeader />
-
-      <DNSQueryArray />
-      <DNSResourceRecordArray
-        name="DNS Answers"
-        :records="answers" />
-      <DNSResourceRecordArray
-        name="DNS Authority Nameservers"
-        :records="nameservers" />
-      <DNSResourceRecordArray
-        name="DNS Addtional Records"
-        :records="additional_records" />>
+      <DNSPacket />
   </div>
 </template>
 
 <script>
-import DNSHeader from './components/DNSHeader.vue'
-import DNSQueryArray from './components/DNSQueryArray.vue'
-import DNSResourceRecordArray from './components/DNSResourceRecordArray.vue'
+import DNSPacket from './components/DNSPacket.vue'
 
 export default {
   name: 'App',
   components: {
-    DNSHeader,
-    DNSQueryArray,
-    DNSResourceRecordArray
-  },
-  data () {
-    return {
-      answers: this.$store.state.answers,
-      nameservers: this.$store.state.authoritative_nameservers,
-      additional_records: this.$store.state.additional_records
-    }
+    DNSPacket
   }
 }
 </script>
