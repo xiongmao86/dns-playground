@@ -20,8 +20,8 @@ export default {
   },
   data () {
     return {
-      arrayBuffer: null
-    };
+      arrayBuffer: this.$store.state.arrayBuffer
+    }
   },
   computed: {
     buffer () {

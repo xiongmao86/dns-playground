@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    arrayBuffer: null,
     fileList: null,
     pack: {
       "id": 0x867f,
