@@ -1,7 +1,6 @@
 <template>
     <tr>
-        <th v-for="index in this.range()" 
-            :key="index">
+        <th v-for="index in n" :key="index">
                 {{ index }}
         </th>
     </tr>
@@ -11,12 +10,7 @@
 export default {
     props: [
         "n"
-    ],
-    methods: {
-        range() {
-            return Array.from({ length: this.n }, (v, k) => k + 1)
-        }
-    }
+    ]
 }
 </script>
 
