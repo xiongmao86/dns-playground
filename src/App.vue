@@ -4,7 +4,7 @@
       <button @click="loadBinary">Load</button>
       <DNSBuffer v-if="this.arrayBuffer"
         :buffer="buffer" />
-      <DNSPacket />
+      <DNSPacket :pack="pack" />
   </div>
 </template>
 
@@ -20,7 +20,8 @@ export default {
   },
   data () {
     return {
-      arrayBuffer: this.$store.state.arrayBuffer
+      arrayBuffer: this.$store.state.arrayBuffer,
+      pack: this.$store.state.pack
     }
   },
   computed: {
