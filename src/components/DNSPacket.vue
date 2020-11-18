@@ -10,7 +10,7 @@
         :records="pack.answers" />
       <DNSResourceRecordArray
         name="DNS Authority Nameservers"
-        :records="pack.nameservers" />
+        :records="pack.authoritative_nameservers" />
       <DNSResourceRecordArray
         name="DNS Addtional Records"
         :records="pack.additional_records" />>
