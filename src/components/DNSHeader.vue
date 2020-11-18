@@ -72,10 +72,8 @@ export default {
     components: {
         Ruler
     },
-    data() {
-        return {
-            pack: this.$store.state.pack
-        }
+    props: {
+        pack: Object
     }
 }
 </script>

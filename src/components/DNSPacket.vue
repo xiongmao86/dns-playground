@@ -1,19 +1,19 @@
 <template>
   <div>
       <h1>The Anatomy of DNS Packet</h1>
-      <DNSHeader />
+      <DNSHeader :pack="pack" />
 
       <DNSQueryArray 
-        :querys="querys"/>
+        :querys="pack.querys"/>
       <DNSResourceRecordArray
         name="DNS Answers"
-        :records="answers" />
+        :records="pack.answers" />
       <DNSResourceRecordArray
         name="DNS Authority Nameservers"
-        :records="nameservers" />
+        :records="pack.nameservers" />
       <DNSResourceRecordArray
         name="DNS Addtional Records"
-        :records="additional_records" />>
+        :records="pack.additional_records" />>
   </div>
 </template>
 
@@ -29,13 +29,8 @@ export default {
     DNSQueryArray,
     DNSResourceRecordArray
   },
-  data () {
-    return {
-      querys: this.$store.state.pack.querys,
-      answers: this.$store.state.pack.answers,
-      nameservers: this.$store.state.pack.authoritative_nameservers,
-      additional_records: this.$store.state.pack.additional_records
-    }
+  props: {
+    pack: Object
   }
 }
 </script>
