@@ -14,10 +14,8 @@ export default {
     components: {
         DNSQuery
     },
-    data () {
-        return {
-            querys: this.$store.state.pack.querys
-        }
+    props: {
+        querys: Array
     }
 }
 </script>

@@ -3,7 +3,8 @@
       <h1>The Anatomy of DNS Packet</h1>
       <DNSHeader />
 
-      <DNSQueryArray />
+      <DNSQueryArray 
+        :querys="querys"/>
       <DNSResourceRecordArray
         name="DNS Answers"
         :records="answers" />
@@ -30,6 +31,7 @@ export default {
   },
   data () {
     return {
+      querys: this.$store.state.pack.querys,
       answers: this.$store.state.pack.answers,
       nameservers: this.$store.state.pack.authoritative_nameservers,
       additional_records: this.$store.state.pack.additional_records
