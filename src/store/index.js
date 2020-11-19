@@ -10,7 +10,7 @@ export default new Vuex.Store({
     pack: {
       "id": 0x867f,
       "flags": {
-        "response": 0, // should be 1
+        "response": 0, // should be 1, seting 0 to test store getter
         "opcode": 0x0000,
         "authoritative": 0,
         "truncated": 0,
@@ -142,7 +142,7 @@ export default new Vuex.Store({
           "address": "180.76.76.95"
         }
       ]
-    }
+    } // finish pack object
   },
   getters: {
     dataView (state) {
@@ -153,6 +153,7 @@ export default new Vuex.Store({
       let id = getters.dataView?.getUint16(0, true) || state.pack.id;
       return "0x" + id.toString(16);
     },
+    // if dataView is successfully upgraded, qr should be 1 instead of 0.
     flags (state, getters) {
       let flags = getters.dataView?.getUint16(1, true);
       if (flags) {
@@ -190,6 +191,8 @@ export default new Vuex.Store({
       return getters.dataView?.getUint16(3, true) || state.pack.answer_count;
     },
     authority_count (state, getters) {
+      console.log("getters.dataView: ", getters.dataView);
+      console.log("state.pack.authority_count: ", state.pack.authority_count);
       return getters.dataView?.getUint16(4, true) || state.pack.authority_count;
     },
     additional_information_count (state, getters) {
