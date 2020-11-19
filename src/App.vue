@@ -2,9 +2,12 @@
   <div id="app">
       <input id="binaryFile" type="file">
       <button @click="loadBinary">Load</button>
-      <DNSBuffer v-if="this.arrayBuffer"
-        :buffer="buffer" />
-      <DNSPacket :pack="pack" />
+      <div v-if="this.arrayBuffer">
+        <DNSBuffer
+          :buffer="buffer" />
+        <DNSPacket
+          :pack="pack" />
+      </div>
   </div>
 </template>
 
@@ -18,11 +21,6 @@ export default {
     DNSPacket,
     DNSBuffer
   },
-  data () {
-    return {
-      pack: this.$store.state.pack
-    }
-  },
   computed: {
     arrayBuffer () {
       return this.$store.state.arrayBuffer;
@@ -30,6 +28,9 @@ export default {
     buffer () {
       return [...new Uint8Array(this.arrayBuffer)]
         .map (b => b.toString(16).toUpperCase().padStart(2, '0'));
+    },
+    pack () {
+      return this.$store.getters.whole_packet;
     }
   },
   methods: {
