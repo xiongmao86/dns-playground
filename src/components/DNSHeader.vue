@@ -10,7 +10,7 @@
                     <th colspan="16">ID</th>
                 </tr>
                 <tr>
-                    <td colspan="16">{{"0x" + pack.id.toString(16)}}</td>
+                    <td colspan="16">{{pack.id}}</td>
                 </tr>
                 <tr>
                     <th>QR</th>
