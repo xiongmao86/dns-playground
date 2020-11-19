@@ -150,7 +150,7 @@ export default new Vuex.Store({
       return ab? new DataView(ab) : null;
     },
     id (state, getters) {
-      let id = getters.dataView?.getUint16(0, true) || state.pack.id;
+      let id = getters.dataView?.getUint16(0, true);
       return "0x" + id.toString(16);
     },
     // if dataView is successfully upgraded, qr should be 1 instead of 0.
@@ -185,18 +185,16 @@ export default new Vuex.Store({
       }
     },
     query_count (state, getters) {
-      return getters.dataView?.getUint16(2, true) || state.pack.query_count;
+      return getters.dataView?.getUint16(2, true);
     },
     answer_count (state, getters) {
-      return getters.dataView?.getUint16(3, true) || state.pack.answer_count;
+      return getters.dataView?.getUint16(3, true);
     },
     authority_count (state, getters) {
-      console.log("getters.dataView: ", getters.dataView);
-      console.log("state.pack.authority_count: ", state.pack.authority_count);
-      return getters.dataView?.getUint16(4, true) || state.pack.authority_count;
+      return getters.dataView?.getUint16(4, true);
     },
     additional_information_count (state, getters) {
-      return getters.dataView?.getUint16(5, true) || state.pack.additional_information_count;
+      return getters.dataView?.getUint16(5, true);
     }
   },
   mutations: {
