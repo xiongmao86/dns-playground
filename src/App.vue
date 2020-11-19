@@ -20,11 +20,13 @@ export default {
   },
   data () {
     return {
-      arrayBuffer: this.$store.state.arrayBuffer,
       pack: this.$store.state.pack
     }
   },
   computed: {
+    arrayBuffer () {
+      return this.$store.state.arrayBuffer;
+    },
     buffer () {
       return [...new Uint8Array(this.arrayBuffer)]
         .map (b => b.toString(16).toUpperCase().padStart(2, '0'));
@@ -37,7 +39,9 @@ export default {
       if (files.length === 1) {
         let file = files[0];
         let reader = new FileReader();
-        reader.onload = (event) => this.arrayBuffer = event.target.result;
+        reader.onload = (event) => {
+          this.$store.commit('setArrayBuffer', event.target.result);
+        }
         reader.readAsArrayBuffer(file);
       } 
     }

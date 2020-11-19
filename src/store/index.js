@@ -200,6 +200,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    setArrayBuffer (state, payload) {
+      state.arrayBuffer = payload;
+    }
   },
   actions: {
   },
