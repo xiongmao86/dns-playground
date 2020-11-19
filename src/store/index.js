@@ -145,17 +145,39 @@ export default new Vuex.Store({
     } // finish pack object
   },
   getters: {
-    dataView (state) {
+    packetView (state) {
       let ab = state.arrayBuffer;
       return ab? new DataView(ab) : null;
     },
+    packetHex (state) {
+      let ab = state.arrayBuffer;
+      if (ab) {
+        return [...new Uint8Array(ab)]
+          .map( b => b.toString(16).toUpperCase().padStart(2, '0'));
+      } else {
+        return null;
+      }
+    },
+    headerArrayBuffer (state) {
+      let ab = state.arrayBuffer;
+      return ab? ab.slice(0,12) : null;
+    },
+    headerHex (state, getters) {
+      let hab = getters.headerArrayBuffer;
+      if (hab) {
+        return [...new Uint8Array(hab)]
+          .map( b => b.toString(16).toUpperCase().padStart(2, '0'));
+      } else {
+        return null;
+      }
+    },
     id (state, getters) {
-      let id = getters.dataView?.getUint16(0);
+      let id = getters.packetView?.getUint16(0);
       return "0x" + id.toString(16);
     },
-    // if dataView is successfully upgraded, qr should be 1 instead of 0.
+    // if packetView is successfully upgraded, qr should be 1 instead of 0.
     flags (state, getters) {
-      let flags = getters.dataView?.getUint16(2);
+      let flags = getters.packetView?.getUint16(2);
       if (flags) {
         let qr = flags >>> 15;
         let opcode = flags >>> 11 & 0b1111;
@@ -185,20 +207,18 @@ export default new Vuex.Store({
       }
     },
     query_count (state, getters) {
-      return getters.dataView?.getUint16(4);
+      return getters.packetView?.getUint16(4);
     },
     answer_count (state, getters) {
-      return getters.dataView?.getUint16(6);
+      return getters.packetView?.getUint16(6);
     },
     authority_count (state, getters) {
-      return getters.dataView?.getUint16(8);
+      return getters.packetView?.getUint16(8);
     },
     additional_information_count (state, getters) {
-      return getters.dataView?.getUint16(10);
+      return getters.packetView?.getUint16(10);
     },
-    query_name (state, getters) {
 
-    },
     packet (state, getters) {
       let header = {
         id: getters.id,

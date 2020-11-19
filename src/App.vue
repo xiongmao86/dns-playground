@@ -3,6 +3,10 @@
       <input id="binaryFile" type="file">
       <button @click="loadBinary">Load</button>
       <div v-if="this.arrayBuffer">
+        <h1>Header</h1>
+        <DNSBuffer
+          :buffer="header" />
+        <h1>Packet</h1>
         <DNSBuffer
           :buffer="buffer" />
         <DNSPacket
@@ -26,8 +30,10 @@ export default {
       return this.$store.state.arrayBuffer;
     },
     buffer () {
-      return [...new Uint8Array(this.arrayBuffer)]
-        .map (b => b.toString(16).toUpperCase().padStart(2, '0'));
+      return this.$store.getters.packetHex;
+    },
+    header () {
+      return this.$store.getters.headerHex;
     },
     pack () {
       return this.$store.getters.packet;
