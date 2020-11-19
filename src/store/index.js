@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     arrayBuffer: null,
+    restStartPoint: 12,
     fileList: null,
     pack: {
       "id": '0x867f',
@@ -162,6 +163,10 @@ export default new Vuex.Store({
       let ab = state.arrayBuffer;
       return ab? ab.slice(0,12) : null;
     },
+    headerView (state, getters) {
+      let hab = getters.headerArrayBuffer;
+      return hab? new DataView(hab) : null;
+    },
     headerHex (state, getters) {
       let hab = getters.headerArrayBuffer;
       if (hab) {
@@ -172,12 +177,12 @@ export default new Vuex.Store({
       }
     },
     id (state, getters) {
-      let id = getters.packetView?.getUint16(0);
+      let id = getters.headerView?.getUint16(0);
       return "0x" + id.toString(16);
     },
-    // if packetView is successfully upgraded, qr should be 1 instead of 0.
+    // if headerView is successfully upgraded, qr should be 1 instead of 0.
     flags (state, getters) {
-      let flags = getters.packetView?.getUint16(2);
+      let flags = getters.headerView?.getUint16(2);
       if (flags) {
         let qr = flags >>> 15;
         let opcode = flags >>> 11 & 0b1111;
@@ -207,16 +212,16 @@ export default new Vuex.Store({
       }
     },
     query_count (state, getters) {
-      return getters.packetView?.getUint16(4);
+      return getters.headerView?.getUint16(4);
     },
     answer_count (state, getters) {
-      return getters.packetView?.getUint16(6);
+      return getters.headerView?.getUint16(6);
     },
     authority_count (state, getters) {
-      return getters.packetView?.getUint16(8);
+      return getters.headerView?.getUint16(8);
     },
     additional_information_count (state, getters) {
-      return getters.packetView?.getUint16(10);
+      return getters.headerView?.getUint16(10);
     },
 
     packet (state, getters) {
@@ -240,6 +245,9 @@ export default new Vuex.Store({
   mutations: {
     setArrayBuffer (state, payload) {
       state.arrayBuffer = payload;
+    },
+    shrinkToRest (state, start) {
+      state.restStartPoint = start;
     }
   },
   actions: {
