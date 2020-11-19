@@ -30,7 +30,7 @@ export default {
         .map (b => b.toString(16).toUpperCase().padStart(2, '0'));
     },
     pack () {
-      return this.$store.getters.whole_packet;
+      return this.$store.getters.packet;
     }
   },
   methods: {

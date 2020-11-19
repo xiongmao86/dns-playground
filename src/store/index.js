@@ -8,7 +8,7 @@ export default new Vuex.Store({
     arrayBuffer: null,
     fileList: null,
     pack: {
-      "id": 0x867f,
+      "id": '0x867f',
       "flags": {
         "response": 0, // should be 1, seting 0 to test store getter
         "opcode": 0x0000,
@@ -181,7 +181,7 @@ export default new Vuex.Store({
           "error_code": rcode
         };
       } else {
-        return state.pack.flags;
+        return null;
       }
     },
     query_count (state, getters) {
@@ -195,6 +195,13 @@ export default new Vuex.Store({
     },
     additional_information_count (state, getters) {
       return getters.dataView?.getUint16(5, true);
+    },
+    packet (state, getters) {
+      let fromBin = {
+        id: getters.id,
+        flags: getters.flags
+      };
+      return Object.assign({}, state.pack, fromBin);
     }
   },
   mutations: {
