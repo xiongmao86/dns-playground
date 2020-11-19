@@ -10,7 +10,7 @@ export default new Vuex.Store({
     pack: {
       "id": 0x867f,
       "flags": {
-        "response": 1,
+        "response": 0, // should be 1
         "opcode": 0x0000,
         "authoritative": 0,
         "truncated": 0,
@@ -142,6 +142,58 @@ export default new Vuex.Store({
           "address": "180.76.76.95"
         }
       ]
+    }
+  },
+  getters: {
+    dataView (state) {
+      let ab = state.arrayBuffer;
+      return ab? new DataView(ab) : null;
+    },
+    id (state, getters) {
+      let id = getters.dataView?.getUint16(0, true) || state.pack.id;
+      return "0x" + id.toString(16);
+    },
+    flags (state, getters) {
+      let flags = getters.dataView?.getUint16(1, true);
+      if (flags) {
+        let qr = flags >>> 15;
+        let opcode = flags >>> 11 & 0b1111;
+        let aa = flags >>> 10 & 1;
+        let tc = flags >>> 9 & 1;
+        let rd = flags >>> 8 & 1;
+        let ra = flags >>> 7 & 1;
+        let z = flags >>> 6 & 1;
+        let ad = flags >>> 5 & 1;
+        let cd = flags >>> 4 & 1;
+        let rcode = flags & 0b1111;
+
+        return {
+          "response": qr,
+          "opcode": opcode,
+          "authoritative": aa,
+          "truncated": tc,
+          "recursion_desired": rd,
+          "recursion_available": ra,
+          "z": z,
+          "authentic_data": ad,
+          "checking_disable": cd,
+          "error_code": rcode
+        };
+      } else {
+        return state.pack.flags;
+      }
+    },
+    query_count (state, getters) {
+      return getters.dataView?.getUint16(2, true) || state.pack.query_count;
+    },
+    answer_count (state, getters) {
+      return getters.dataView?.getUint16(3, true) || state.pack.answer_count;
+    },
+    authority_count (state, getters) {
+      return getters.dataView?.getUint16(4, true) || state.pack.authority_count;
+    },
+    additional_information_count (state, getters) {
+      return getters.dataView?.getUint16(5, true) || state.pack.additional_information_count;
     }
   },
   mutations: {
