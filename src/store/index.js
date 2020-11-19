@@ -150,12 +150,12 @@ export default new Vuex.Store({
       return ab? new DataView(ab) : null;
     },
     id (state, getters) {
-      let id = getters.dataView?.getUint16(0, true);
+      let id = getters.dataView?.getUint16(0);
       return "0x" + id.toString(16);
     },
     // if dataView is successfully upgraded, qr should be 1 instead of 0.
     flags (state, getters) {
-      let flags = getters.dataView?.getUint16(1, true);
+      let flags = getters.dataView?.getUint16(2);
       if (flags) {
         let qr = flags >>> 15;
         let opcode = flags >>> 11 & 0b1111;
@@ -185,23 +185,36 @@ export default new Vuex.Store({
       }
     },
     query_count (state, getters) {
-      return getters.dataView?.getUint16(2, true);
+      return getters.dataView?.getUint16(4);
     },
     answer_count (state, getters) {
-      return getters.dataView?.getUint16(3, true);
+      return getters.dataView?.getUint16(6);
     },
     authority_count (state, getters) {
-      return getters.dataView?.getUint16(4, true);
+      return getters.dataView?.getUint16(8);
     },
     additional_information_count (state, getters) {
-      return getters.dataView?.getUint16(5, true);
+      return getters.dataView?.getUint16(10);
+    },
+    query_name (state, getters) {
+
     },
     packet (state, getters) {
-      let fromBin = {
+      let header = {
         id: getters.id,
-        flags: getters.flags
+        flags: getters.flags,
+        query_count: getters.query_count,
+        answer_count: getters.answer_count,
+        authority_count: getters.authority_count,
+        additional_information_count: getters.additional_information_count
       };
-      return Object.assign({}, state.pack, fromBin);
+      // let name = getters.query_name;
+      // let querys = [{
+      //   "name": name || "www.baidu.com",
+      //   "type": "A",
+      //   "klass": "IN"
+      // }];
+      return Object.assign({}, state.pack, header);
     }
   },
   mutations: {
