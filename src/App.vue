@@ -2,13 +2,13 @@
   <div id="app">
       <input id="binaryFile" type="file">
       <button @click="loadBinary">Load</button>
-      <div v-if="this.arrayBuffer">
-        <h1>Header</h1>
+      <div v-if="this.$store.state.loaded">
+        <!-- <h1>Header</h1>
         <DNSBuffer
-          :buffer="header" />
+          :buffer="header" /> -->
         <h1>Packet</h1>
-        <DNSBuffer
-          :buffer="buffer" />
+        <!-- <DNSBuffer
+          :buffer="buffer" /> -->
         <DNSPacket
           :pack="pack" />
       </div>
@@ -17,13 +17,13 @@
 
 <script>
 import DNSPacket from './components/DNSPacket.vue'
-import DNSBuffer from './components/DNSBuffer.vue'
+// import DNSBuffer from './components/DNSBuffer.vue'
 
 export default {
   name: 'App',
   components: {
     DNSPacket,
-    DNSBuffer
+    // DNSBuffer
   },
   computed: {
     arrayBuffer () {
@@ -36,7 +36,8 @@ export default {
       return this.$store.getters.headerHex;
     },
     pack () {
-      return this.$store.getters.packet;
+      return this.$store.state.default;
+      // return this.$store.getters.packet;
     }
   },
   methods: {
@@ -52,6 +53,9 @@ export default {
         reader.readAsArrayBuffer(file);
       } 
     }
+  },
+  mounted () {
+    this.$store.dispatch('getDefault');
   }
 }
 </script>

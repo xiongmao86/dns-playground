@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -8,6 +9,8 @@ export default new Vuex.Store({
     arrayBuffer: null,
     restStartPoint: 12,
     fileList: null,
+    default: null,
+    loaded: false,
     pack: {
       "id": '0x867f',
       "flags": {
@@ -246,11 +249,24 @@ export default new Vuex.Store({
     setArrayBuffer (state, payload) {
       state.arrayBuffer = payload;
     },
-    shrinkToRest (state, start) {
-      state.restStartPoint = start;
+    setDefault (state, payload) {
+      state.default = payload;
+    },
+    setLoaded (state, payload) {
+      state.loaded = payload;
     }
   },
   actions: {
+    getDefault (context) {
+      axios.get('http://localhost:3000/default')
+        .then(function (data) {
+          context.commit("setDefault", data.data);
+          context.commit("setLoaded", true);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   },
   modules: {
   }
