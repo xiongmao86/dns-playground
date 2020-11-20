@@ -13,7 +13,7 @@
         :records="pack.authoritative_nameservers" />
       <DNSResourceRecordArray
         name="DNS Addtional Records"
-        :records="pack.additional_records" />>
+        :records="pack.additional_records" />
   </div>
 </template>
 
