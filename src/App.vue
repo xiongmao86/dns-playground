@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+      <DNSSend />
       <div v-if="this.$store.state.loaded">
         <h1>Packet</h1>
         <DNSPacket
@@ -10,11 +11,13 @@
 
 <script>
 import DNSPacket from './components/DNSPacket.vue'
+import DNSSend from './components/DNSSend.vue'
 
 export default {
   name: 'App',
   components: {
     DNSPacket,
+    DNSSend,
   },
   computed: {
     header () {
