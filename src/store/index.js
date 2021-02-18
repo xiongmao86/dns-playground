@@ -21,7 +21,7 @@ export default new Vuex.Store({
   },
   actions: {
     getDefault (context) {
-      axios.get('http://localhost:3000/default')
+      axios.get('http://localhost:3000/parse')
         .then(function (data) {
           context.commit("setDefault", data.data);
           context.commit("setLoaded", true);
