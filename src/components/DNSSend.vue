@@ -1,101 +1,139 @@
 <template>
     <div>
         <div>
-            <div>
-                <label for="qname">qname</label>
-                <input id="qname" type="text" v-model.trim="packet.qname" placeholder="Enter domain name:" />
-            </div>
+            <table>
+                <thead>
+                    <Ruler :n="16" />
+                </thead>
+                <tbody>
+                    <tr>
+                        <th colspan="16">ID</th>
+                    </tr>
+                    <tr>
+                        <td colspan="16">
+                            <input type="text" v-model.number="packet.id" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="16">Flags</th>
+                    </tr>
+                    <tr>
+                        <th>qr</th>
+                        <th colspan="4">opcode</th>
+                        <th>aa</th>
+                        <th>tc</th>
+                        <th>rd</th>
+                        <th>ra</th>
+                        <th>z</th>
+                        <th>ad</th>
+                        <th>cd</th>
+                        <th colspan="4">rcode</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" v-model="packet.bits.qr" true-value=1 false-value=0 />
+                        </td>
+                        <td colspan="4">
+                            <select id="opcode" v-model="packet.opcode">
+                                <option value=0>QUERY</option>
+                                <option value=1>IQUERY</option>
+                                <option value=2>STATUS</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="checkbox" v-model="packet.bits.aa" true-value=1 false-value=0 />
+                        </td>
+                        <td>
+                            <input type="checkbox" v-model="packet.bits.tc" true-value=1 false-value=0 />
+                        </td>
+                        <td>
+                            <input type="checkbox" v-model="packet.bits.rd" true-value=1 false-value=0 />
+                        </td>
+                        <td>
+                            <input type="checkbox" v-model="packet.bits.ra" true-value=1 false-value=0 />
+                        </td>
+                        <td>
+                            <input type="checkbox" v-model="packet.bits.z" true-value=1 false-value=0 />
+                        </td>
+                        <td>
+                            <input type="checkbox" v-model="packet.bits.ad" true-value=1 false-value=0 />
+                        </td>
+                        <td>
+                            <input type="checkbox" v-model="packet.bits.cd" true-value=1 false-value=0 />
+                        </td>
+                        <td colspan="4">
+                            <select id="rcode" v-model="packet.rcode">
+                                <option value=0>No error</option>
+                                <option value=1>Format error</option>
+                                <option value=2>Server failure</option>
+                                <option value=4>Not implemented</option>
+                                <option value=5>Refused</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="16">qdcount</th>
+                    </tr>
+                    <tr>
+                        <td colspan="16"><input type="text" v-model.number="packet.qdcount" /></td>
+                    </tr>
+                    <tr>
+                        <th colspan="16">ancount</th>
+                    </tr>
+                    <tr>
+                        <td colspan="16"><input type="text" v-model.number="packet.ancount" /></td>
+                    </tr>
+                    <tr>
+                        <th colspan="16">nscount</th>
+                    </tr>
+                    <tr>
+                        <td colspan="16"><input type="text" v-model.number="packet.nscount" /></td>
+                    </tr>
+                    <tr>
+                        <th colspan="16">arcount</th>
+                    </tr>
+                    <tr>
+                        <td colspan="16"><input type="text" v-model.number="packet.arcount" /></td>
+                    </tr>
+                    <tr>
+                        <th colspan="16">qname</th>
+                    </tr>
+                    <tr>
+                        <td colspan="16"><input type="text" v-model.trim="packet.qname" /></td>
+                    </tr>
+                    <tr>
+                        <th colspan="16">qtype</th>
+                    </tr>
+                    <tr>
+                        <td colspan="16"><input type="text" v-model.number="packet.qtype" /></td>
+                    </tr>
+                    <tr>
+                        <th colspan="16">qclass</th>
+                    </tr>
+                    <tr>
+                        <td colspan="16"><input type="text" v-model.number="packet.qclass" /></td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <div>
-                <label for="qtype">qtype</label>
-                <input id="qtype" type="text" v-model.number="packet.qtype" placeholder="Enter query type:" />
-            </div>
 
-            <div>
-                <label for="qclass">qclass</label>
-                <input id="qclass" type="text" v-model.number="packet.qclass" placeholder="Enter query class:" />
-            </div>
 
-            <div>
-                <label for="qdcount">qdcount</label>
-                <input id="qdcount" type="text" v-model.number="packet.qdcount" placeholder="Enter the number of questions:" />
-            </div>
-
-            <div>
-                <label for="ancount">ancount</label>
-                <input id="ancount" type="text" v-model.number="packet.ancount" placeholder="Enter the number of answers:" />
-            </div>
-
-            <div>
-                <label for="nscount">nscount</label>
-                <input id="nscount" type="text" v-model.number="packet.nscount" placeholder="Enter the number of nameservers:" />
-            </div>
-
-            <div>
-                <label for="arcount">arcount</label>
-                <input id="arcount" type="text" v-model.number="packet.arcount" placeholder="Enter the number of additional records:" />
-            </div>
-
-            <div>
-                <label for="identity">id</label>
-                <input id="identity" type="text" v-model.number="packet.id" placeholder="Enter identity number:" />
-            </div>
-
-            <div>
-                <label for="opcode">opcode</label>
-                <select id="opcode" v-model="packet.opcode">
-                    <option value=0>QUERY</option>
-                    <option value=1>IQUERY</option>
-                    <option value=2>STATUS</option>
-                </select>
-            </div>
-        </div>
-
-        <div>
-            <label for="rcode">rcode</label>
-            <select id="rcode" v-model="packet.rcode">
-                <option value=0>No error</option>
-                <option value=1>Format error</option>
-                <option value=2>Server failure</option>
-                <option value=4>Not implemented</option>
-                <option value=5>Refused</option>
-            </select>
-        </div>
-            
-        <div>
-            <span>{{bits}}</span>
-
-            <label for="qr">qr</label>
-            <input id="qr" type="checkbox" v-model="packet.bits.qr" true-value=1 false-value=0 />
-            
-            <label for="aa">aa</label>
-            <input id="aa" type="checkbox" v-model="packet.bits.aa" true-value=1 false-value=0 />
-            
-            <label for="tc">tc</label>
-            <input id="tc" type="checkbox" v-model="packet.bits.tc" true-value=1 false-value=0 />
-
-            <label for="rd">rd</label>
-            <input id="rd" type="checkbox" v-model="packet.bits.rd" true-value=1 false-value=0 />
-
-            <label for="ra">ra</label>
-            <input id="ra" type="checkbox" v-model="packet.bits.ra" true-value=1 false-value=0 />
-
-            <label for="ad">ad</label>
-            <input id="ad" type="checkbox" v-model="packet.bits.ad" true-value=1 false-value=0 />
-
-            <label for="cd">cd</label>
-            <input id="cd" type="checkbox" v-model="packet.bits.cd" true-value=1 false-value=0 />
         </div>
     </div>
 </template>
 
 <script>
+import Ruler from './Ruler.vue';
+
 export default {
     name: 'Send',
+    components: {
+        Ruler
+    },
     data: function() {
         return {
             packet: {
-                id: '',
+                id: 0,
                 opcode: 0,
                 bits: {
                     qr: 0,
@@ -103,6 +141,7 @@ export default {
                     tc: 0,
                     rd: 0,
                     ra: 0,
+                    z: 0,
                     ad: 0,
                     cd: 0,
                 },
@@ -111,9 +150,9 @@ export default {
                 ancount: 0,
                 nscount: 0,
                 arcount: 0,
-                qname: '',
-                qtype: '',
-                qclass: '',
+                qname: 'www.baidu.com',
+                qtype: 1,
+                qclass: 1,
             },
         };
     }

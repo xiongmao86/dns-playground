@@ -56,4 +56,11 @@ th {
 td {
   background-color: yellowgreen;
 }
+
+td > input[type="text"] {
+  text-align: center;
+  width: 100%;
+  padding: 0;
+  border-style: none;
+}
 </style>
