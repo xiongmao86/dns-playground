@@ -3,42 +3,42 @@
         <div>
             <div>
                 <label for="qname">qname</label>
-                <input id="qname" type="text" v-model="packet.qname" placeholder="Enter domain name:" />
+                <input id="qname" type="text" v-model.trim="packet.qname" placeholder="Enter domain name:" />
             </div>
 
             <div>
                 <label for="qtype">qtype</label>
-                <input id="qtype" type="text" v-model="packet.qtype" placeholder="Enter query type:" />
+                <input id="qtype" type="text" v-model.number="packet.qtype" placeholder="Enter query type:" />
             </div>
 
             <div>
                 <label for="qclass">qclass</label>
-                <input id="qclass" type="text" v-model="packet.qclass" placeholder="Enter query class:" />
+                <input id="qclass" type="text" v-model.number="packet.qclass" placeholder="Enter query class:" />
             </div>
 
             <div>
                 <label for="qdcount">qdcount</label>
-                <input id="qdcount" type="text" v-model="packet.qdcount" placeholder="Enter the number of questions:" />
+                <input id="qdcount" type="text" v-model.number="packet.qdcount" placeholder="Enter the number of questions:" />
             </div>
 
             <div>
                 <label for="ancount">ancount</label>
-                <input id="ancount" type="text" v-model="packet.ancount" placeholder="Enter the number of answers:" />
+                <input id="ancount" type="text" v-model.number="packet.ancount" placeholder="Enter the number of answers:" />
             </div>
 
             <div>
                 <label for="nscount">nscount</label>
-                <input id="nscount" type="text" v-model="packet.nscount" placeholder="Enter the number of nameservers:" />
+                <input id="nscount" type="text" v-model.number="packet.nscount" placeholder="Enter the number of nameservers:" />
             </div>
 
             <div>
                 <label for="arcount">arcount</label>
-                <input id="arcount" type="text" v-model="packet.arcount" placeholder="Enter the number of additional records:" />
+                <input id="arcount" type="text" v-model.number="packet.arcount" placeholder="Enter the number of additional records:" />
             </div>
 
             <div>
                 <label for="identity">id</label>
-                <input id="identity" type="text" v-model="packet.id" placeholder="Enter identity number:" />
+                <input id="identity" type="text" v-model.number="packet.id" placeholder="Enter identity number:" />
             </div>
 
             <div>
@@ -107,10 +107,10 @@ export default {
                     cd: 0,
                 },
                 rcode: 0,
-                qdcount: '',
-                ancount: '',
-                nscount: '',
-                arcount: '',
+                qdcount: 1,
+                ancount: 0,
+                nscount: 0,
+                arcount: 0,
                 qname: '',
                 qtype: '',
                 qclass: '',
