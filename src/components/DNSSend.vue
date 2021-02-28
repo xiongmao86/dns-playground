@@ -31,7 +31,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" v-model="packet.bits.qr" true-value=1 false-value=0 />
+                            <input type="checkbox" v-model="packet.qr" true-value=1 false-value=0 />
                         </td>
                         <td colspan="4">
                             <select id="opcode" v-model="packet.opcode">
@@ -41,25 +41,25 @@
                             </select>
                         </td>
                         <td>
-                            <input type="checkbox" v-model="packet.bits.aa" true-value=1 false-value=0 />
+                            <input type="checkbox" v-model="packet.aa" true-value=1 false-value=0 />
                         </td>
                         <td>
-                            <input type="checkbox" v-model="packet.bits.tc" true-value=1 false-value=0 />
+                            <input type="checkbox" v-model="packet.tc" true-value=1 false-value=0 />
                         </td>
                         <td>
-                            <input type="checkbox" v-model="packet.bits.rd" true-value=1 false-value=0 />
+                            <input type="checkbox" v-model="packet.rd" true-value=1 false-value=0 />
                         </td>
                         <td>
-                            <input type="checkbox" v-model="packet.bits.ra" true-value=1 false-value=0 />
+                            <input type="checkbox" v-model="packet.ra" true-value=1 false-value=0 />
                         </td>
                         <td>
-                            <input type="checkbox" v-model="packet.bits.z" true-value=1 false-value=0 />
+                            <input type="checkbox" v-model="packet.z" true-value=1 false-value=0 />
                         </td>
                         <td>
-                            <input type="checkbox" v-model="packet.bits.ad" true-value=1 false-value=0 />
+                            <input type="checkbox" v-model="packet.ad" true-value=1 false-value=0 />
                         </td>
                         <td>
-                            <input type="checkbox" v-model="packet.bits.cd" true-value=1 false-value=0 />
+                            <input type="checkbox" v-model="packet.cd" true-value=1 false-value=0 />
                         </td>
                         <td colspan="4">
                             <select id="rcode" v-model="packet.rcode">
@@ -135,16 +135,14 @@ export default {
             packet: {
                 id: 0,
                 opcode: 0,
-                bits: {
-                    qr: 0,
-                    aa: 0,
-                    tc: 0,
-                    rd: 0,
-                    ra: 0,
-                    z: 0,
-                    ad: 0,
-                    cd: 0,
-                },
+                qr: 0,
+                aa: 0,
+                tc: 0,
+                rd: 0,
+                ra: 0,
+                z: 0,
+                ad: 0,
+                cd: 0,
                 rcode: 0,
                 qdcount: 1,
                 ancount: 0,
