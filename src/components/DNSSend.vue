@@ -115,9 +115,10 @@
                     </tr>
                 </tbody>
             </table>
-
-
-
+            <div>
+                <input type="text" v-model="server_ip" />
+                <button id="send">Send</button>
+            </div>
         </div>
     </div>
 </template>
@@ -132,6 +133,7 @@ export default {
     },
     data: function() {
         return {
+            server_ip: "192.168.1.1",
             packet: {
                 id: 0,
                 opcode: 0,
