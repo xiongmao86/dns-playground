@@ -29,6 +29,16 @@ export default new Vuex.Store({
         .catch(function (error) {
           console.log(error);
         });
+    },
+    sendPacket (context, pack_with_ip) {
+      axios.post('http://localhost:3000/send', pack_with_ip)
+        .then(function (data) {
+          context.commit("setDefault", data.data);
+          context.commit("setLoaded", true);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   },
   modules: {

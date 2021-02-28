@@ -117,7 +117,7 @@
             </table>
             <div>
                 <input type="text" v-model="server_ip" />
-                <button id="send">Send</button>
+                <button @click="sendPacket">Send</button>
             </div>
         </div>
     </div>
@@ -155,6 +155,11 @@ export default {
                 qclass: 1,
             },
         };
+    },
+    methods: {
+        sendPacket: function() {
+            this.$store.dispatch("sendPacket", JSON.stringify({ packet: this.packet, ip: this.server_ip }));
+        }
     }
 }
 </script>
