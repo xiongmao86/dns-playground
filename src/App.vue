@@ -26,9 +26,6 @@ export default {
     pack () {
       return this.$store.state.default;
     }
-  },
-  mounted () {
-    this.$store.dispatch('getDefault');
   }
 }
 </script>
