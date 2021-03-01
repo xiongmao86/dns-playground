@@ -158,7 +158,9 @@ export default {
     },
     methods: {
         sendPacket: function() {
-            this.$store.dispatch("sendPacket", JSON.stringify({ packet: this.packet, ip: this.server_ip }));
+            let data = { packet: this.packet, ip: this.server_ip };
+
+            this.$store.dispatch("sendPacket", data);
         }
     }
 }
