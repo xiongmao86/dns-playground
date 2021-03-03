@@ -159,7 +159,6 @@ export default {
     methods: {
         sendPacket: function() {
             let data = { packet: this.packet, ip: this.server_ip };
-
             this.$store.dispatch("sendPacket", data);
         }
     }
